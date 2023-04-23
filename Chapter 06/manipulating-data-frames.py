@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+import jax.numpy as np
 from numpy.random import default_rng
 rng = default_rng(12345)
 three = rng.uniform(-0.2, 1.0, size=100)
@@ -25,5 +25,3 @@ print(data_frame)
 df = data_frame.dropna()
 
 print(df)
-
-
