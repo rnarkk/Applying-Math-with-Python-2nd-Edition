@@ -1,6 +1,5 @@
-import numpy as np
+import jax.numpy as np
 import matplotlib.pyplot as plt
-
 
 y1 = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
 y2 = np.array([1.2, 1.6, 3.1, 4.2, 4.8])
