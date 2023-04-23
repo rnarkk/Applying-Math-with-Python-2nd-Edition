@@ -1,13 +1,13 @@
 import pandas as pd
+from jax import random
 import jax.numpy as np
 from bokeh import plotting as bk
 import matplotlib.pyplot as plt
 
-from jax.random import default_rng
-rng = default_rng(12345)
+key = random.PRNGKey(12345)
 
 date_range = pd.date_range("2020-01-01", periods=50)
-data = rng.normal(0, 3, size=50).cumsum()
+data = (random.normal(key, (50,)) * 3).cumsum()
 series = pd.Series(data, index=date_range)
 
 bk.output_file("sample.html")
