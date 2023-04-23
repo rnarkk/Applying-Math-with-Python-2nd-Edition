@@ -1,7 +1,6 @@
-from scipy import stats
-from numpy.random import default_rng
+from jax.scipy import stats
+from jax.random import default_rng
 rng = default_rng(12345)
-
 
 sample_A = rng.uniform(2.5, 3.5, size=25)
 sample_B = rng.uniform(3.0, 4.4, size=25)
