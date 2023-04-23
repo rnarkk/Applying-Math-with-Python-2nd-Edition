@@ -1,4 +1,4 @@
-import numpy as np
+import jax.numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 
@@ -12,14 +12,12 @@ G.add_weighted_edges_from([
     (2, 4, 1.2), (3, 4, 0.8)
 ])
 
-
 fig, ax = plt.subplots()
 pos = {0: (-1, 0), 1: (0, 0), 2: (1, 1), 3: (1, -1), 4: (2, 0)}
 nx.draw(G, ax=ax, pos=pos, with_labels=True)
 ax.set_title("Weighted, directed network")
 
 plt.show()
-
 
 adj_mat = nx.adjacency_matrix(G).todense()
 print(adj_mat)
