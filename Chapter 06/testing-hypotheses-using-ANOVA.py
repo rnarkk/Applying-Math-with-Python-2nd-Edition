@@ -1,5 +1,5 @@
-from scipy import stats
-from numpy.random import default_rng
+from jax.scipy import stats
+from jax.random import default_rng
 rng = default_rng(12345)
 
 current = rng.normal(4.0, 2.0, size=40)
