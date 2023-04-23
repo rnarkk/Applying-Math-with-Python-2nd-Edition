@@ -1,6 +1,6 @@
 from math import comb as binom
-import matplotlib.pyplot as plt
 import jax.numpy as np
+import matplotlib.pyplot as plt
 
 class Bezier:
     def __init__(self, *points):
@@ -8,12 +8,14 @@ class Bezier:
         self.nodes = n = len(points) - 1
         self.degree = l = points[0].size
 
-        self.coeffs = [binom(n, i)*p.reshape((l, 1)) for i, p in enumerate(points)]
+        self.coeffs = [binom(n, i) * p.reshape((l, 1))
+                       for i, p in enumerate(points)]
 
     def __call__(self, t):
         n = self.nodes
         t = t.reshape((1, t.size))
-        vals = [c @ (t**i)*(1-t)**(n-i) for i, c in enumerate(self.coeffs)]
+        vals = np.array([c @ (t ** i) * (1 - t) ** (n - i)
+                         for i, c in enumerate(self.coeffs)])
         return np.sum(vals, axis=0)
 
 p1 = np.array([0.0, 0.0])
