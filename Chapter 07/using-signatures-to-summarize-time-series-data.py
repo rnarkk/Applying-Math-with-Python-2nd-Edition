@@ -1,8 +1,8 @@
-import numpy as np
+import jax.numpy as np
 import esig
 import matplotlib.pyplot as plt
 
-from numpy.random import default_rng
+from jax.random import default_rng
 rng = default_rng(12345)
 
 upper_limit = 2*np.pi
@@ -12,16 +12,13 @@ noise_variance = 0.1
 def make_noisy(signal):
     return signal + rng.normal(0.0, noise_variance, size=signal.shape)
 
-
 def signal_a(count):
     t = rng.exponential(upper_limit/count, size=count).cumsum()
     return t, np.column_stack([t/(1.+t)**2, 1./(1.+t)**2])
 
-
 def signal_b(count):
     t = rng.exponential(upper_limit/count, size=count).cumsum()
     return t, np.column_stack([np.cos(t), np.sin(t)])
-
 
 params_a, true_signal_a = signal_a(100)
 params_b, true_signal_b = signal_b(100)
@@ -54,7 +51,6 @@ plt.show()
 signature_a = esig.stream2sig(true_signal_a, 2)
 signature_b = esig.stream2sig(true_signal_b, 2)
 print(signature_a, signature_b, sep="\n")
-
 
 sigs_a = np.vstack([esig.stream2sig(make_noisy(signal_a(rng.integers(50, 100))[1]), depth) for _ in range(50)])
 sigs_b = np.vstack([esig.stream2sig(make_noisy(signal_b(rng.integers(50, 100))[1]), depth) for _ in range(50)])
