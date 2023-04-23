@@ -1,8 +1,8 @@
-import numpy as np
+import jax.numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
-from numpy.random import default_rng
+from jax.random import default_rng
 rng = default_rng(12345)
 
 x = np.linspace(0, 5, 25)
@@ -30,10 +30,8 @@ print(model2.summary())
 
 model_x = sm.add_constant(np.linspace(0, 5))
 
-
 model_y1 = model1.predict(model_x)
 model_y2 = model2.predict(model_x)
-
 
 ax.plot(model_x[:, 1], model_y1, 'k')
 ax.plot(model_x[:, 1], model_y2, 'k--')
