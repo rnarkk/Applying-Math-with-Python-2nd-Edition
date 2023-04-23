@@ -1,10 +1,11 @@
 import pandas as pd
+from jax import random
 import jax.numpy as np
 import matplotlib.pyplot as plt
-from numpy.random import default_rng
-rng = default_rng(12345)
 
-diffs = rng.standard_normal(size=100)
+key = random.PRNGKey(12345)
+
+diffs = random.normal(key, (100,))
 walk = diffs.cumsum()
 df = pd.DataFrame({
     "diffs": diffs,
