@@ -1,18 +1,16 @@
-import numpy as np
+import jax.numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from numpy.random import default_rng
+from jax.random import default_rng
 rng = default_rng(12345)
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, roc_curve
-
 
 df = pd.DataFrame({
     "var1": np.concatenate([rng.normal(3.0, 1.5, size=50), rng.normal(-4.0, 2.0, size=50)]),
     "var2": rng.uniform(size=100),
     "var3": np.concatenate([rng.normal(-2.0, 2.0, size=50), rng.normal(1.5, 0.8, size=50)])
 })
-
 
 score = 4.0 + df["var1"] - df["var3"]
 Y = score >= 0
@@ -29,7 +27,6 @@ plt.show()
 
 model = LogisticRegression()
 model.fit(df, Y)
-
 
 test_df = pd.DataFrame({
     "var1": np.concatenate([rng.normal(3.0, 1.5, size=25), rng.normal(-4.0, 2.0, size=25)]),
