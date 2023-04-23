@@ -1,4 +1,4 @@
-import numpy as np
+import jax.numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
@@ -25,7 +25,6 @@ acf_ax.set_ylabel("Value")
 acf_ax.set_xlabel("Lag")
 pacf_ax.set_xlabel("Lag")
 pacf_ax.set_ylabel("Value")
-
 
 model = sm.tsa.ARIMA(sample_ts, order=(1,1,1))
 fitted = model.fit()
