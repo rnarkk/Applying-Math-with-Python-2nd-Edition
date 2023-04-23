@@ -1,15 +1,21 @@
+from jax import random
 import jax.numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from jax.random import default_rng
-rng = default_rng(12345)
+
+key = random.PRNGKey(12345)
+
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, roc_curve
 
 df = pd.DataFrame({
-    "var1": np.concatenate([rng.normal(3.0, 1.5, size=50), rng.normal(-4.0, 2.0, size=50)]),
-    "var2": rng.uniform(size=100),
-    "var3": np.concatenate([rng.normal(-2.0, 2.0, size=50), rng.normal(1.5, 0.8, size=50)])
+    "var1": np.concatenate([
+        random.normal(key, (50,)) * 1.5 + 3.0,
+        random.normal(key, (50,)) * 2.0 - 4.0]),
+    "var2": random.uniform(key, (100,)),
+    "var3": np.concatenate([
+        random.normal(key, (50,)) * 2.0 - 2.0,
+        random.normal(key, (50,)) * 0.8 + 1.5])
 })
 
 score = 4.0 + df["var1"] - df["var3"]
@@ -29,9 +35,13 @@ model = LogisticRegression()
 model.fit(df, Y)
 
 test_df = pd.DataFrame({
-    "var1": np.concatenate([rng.normal(3.0, 1.5, size=25), rng.normal(-4.0, 2.0, size=25)]),
-    "var2": rng.uniform(size=50),
-    "var3": np.concatenate([rng.normal(-2.0, 2.0, size=25), rng.normal(1.5, 0.8, size=25)])
+    "var1": np.concatenate([
+        random.normal(key, (25,)) * 1.5 + 3.0,
+        random.normal(key, (25,)) * 2.0 - 4.0]),
+    "var2": random.uniform(key, (50,)),
+    "var3": np.concatenate([
+        random.normal(key, (25,)) * 2.0 - 2.0,
+        random.normal(key, (25,)) * 0.8 + 1.5])
 })
 
 test_scores = 4.0 + test_df["var1"] - test_df["var3"]
