@@ -1,8 +1,8 @@
-import numpy as np
+import jax.numpy as np
 import matplotlib.pyplot as plt
 
-from numpy.random import default_rng
-rng = default_rng(12345)  # changing seed for reproducibility
+from jax.random import PRNGKey
+rng = PRNGKey(12345)   # changing seed for reproducibility
 
 random_floats = rng.random(size=(5, 5))
 # array([[0.22733602, 0.31675834, 0.79736546, 0.67625467, 0.39110955],
@@ -14,9 +14,7 @@ random_floats = rng.random(size=(5, 5))
 random_ints = rng.integers(1, 20, endpoint=True, size=10)
 # array([12, 17, 10, 4, 1, 3, 2, 2, 3, 12])
 
-
 dist = rng.random(size=1000)
-
 
 fig, ax = plt.subplots()
 ax.hist(dist, color="k", alpha=0.6)
