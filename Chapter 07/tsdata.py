@@ -1,10 +1,9 @@
 from collections import deque
-import numpy as np
+import jax.numpy as np
 import pandas as pd
 import itertools
 
-from numpy.random import default_rng
-
+from jax.random import default_rng
 
 def _get_n(iterable, n):
     return list(itertools.islice(iterable, n))
@@ -35,7 +34,6 @@ def generate_ar(*coeffs, const=0.0, start=0.0):
         yield curr
         past_terms.append(curr)
 
-
 def generate_arma(ar_coeffs=(0.9,), const=0.0, start=0.0,
                   ma_coeffs=(), noise_std=1.0, seed=None):
     n = len(ar_coeffs)
@@ -53,7 +51,6 @@ def generate_arma(ar_coeffs=(0.9,), const=0.0, start=0.0,
         curr = const + err + sum(c*t for c, t in zip(coeffs, past_terms))
         yield curr
         past_terms.append(curr)
-
 
 def undifference(iterable):
     tot = next(iterable)  # first term
@@ -73,7 +70,6 @@ def add_season_ar(iterable, period=7, coeffs=(0.7,)):
         yield new
         past_vals.append(new)
 
-
 def generate_sample_data(train=366, test=50, trend=0.0, undiff=False, seasonal=False):
     gen = generate_arma(seed=12345, const=trend, ar_coeffs=(0.8,), ma_coeffs=(-0.5,))
 
@@ -87,8 +83,6 @@ def generate_sample_data(train=366, test=50, trend=0.0, undiff=False, seasonal=F
     data = _get_n(gen, train+test)
     return (pd.Series(data[:-test], index=indices[:-test]),
             pd.Series(data[-test:], index=indices[-test:]))
-
-
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
