@@ -1,13 +1,13 @@
 import pandas as pd
+from jax import random
 import jax.numpy as np
 import matplotlib.pyplot as plt
 
-from jax.random import default_rng
-rng = default_rng(12345)
+key = random.PRNGKey(12345)
 
-uniform = rng.uniform(1, 5, size=100)
-normal = rng.normal(1, 2.5, size=100)
-bimodal = np.concatenate([rng.normal(0, 1, size=50), rng.normal(6, 1, size=50)])
+uniform = random.uniform(key, (100,), minval=1, maxval=5)
+normal = random.normal(key, (100,)) * 2.5
+bimodal = np.concatenate([random.normal(key, (50,)), random.normal(key, (50,)) + 6])
 
 df = pd.DataFrame({
     "uniform": uniform,
