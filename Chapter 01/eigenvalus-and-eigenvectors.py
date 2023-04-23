@@ -15,7 +15,6 @@ print(x0)
 
 linalg.norm(x0)  # 1.0  - eigenvalues are normalised.
 
-
 lhs = A @ x0
 rhs = lambda0 * x0
 linalg.norm(lhs - rhs)  # 2.8445583831733384e-15 - very small.
