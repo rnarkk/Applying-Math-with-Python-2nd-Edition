@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 
 G = nx.gnm_random_graph(15, 22, seed=12345)
 
-
 fig, ax = plt.subplots()
 pos = nx.circular_layout(G)
 nx.draw(G, pos=pos, ax=ax, with_labels=True, style="--")
@@ -17,13 +16,8 @@ print(list(min_span_tree.edges))
 
 nx.draw_networkx_edges(min_span_tree, pos=pos, ax=ax, width=2.)
 
-
 dominating_set = nx.dominating_set(G)
 print("Dominating set", dominating_set)
 # Dominating set {0, 1, 2, 4, 10, 14}
 
-
 plt.show()
-
-
-

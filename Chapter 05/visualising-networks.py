@@ -17,5 +17,4 @@ layout = nx.shell_layout(G)
 nx.draw(G, ax=ax, pos=layout, with_labels=True)
 ax.set_title("Simple network drawing")
 
-
 plt.show()

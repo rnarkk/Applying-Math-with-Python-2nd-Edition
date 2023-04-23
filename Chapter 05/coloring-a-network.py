@@ -8,13 +8,11 @@ G.add_edges_from([
     (1, 5), (2, 5), (4, 5)
 ])
 
-
 fig, ax = plt.subplots()
 nx.draw_circular(G, ax=ax, with_labels=True)
 ax.set_title("Scheduling network")
 
 plt.show()
-
 
 coloring = nx.greedy_color(G)
 print("Coloring", coloring)

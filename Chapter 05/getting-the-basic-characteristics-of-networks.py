@@ -40,4 +40,3 @@ print("Density", density)
 is_planar, _ = nx.check_planarity(G)
 print("Is planar", is_planar)
 # Is planar True
-

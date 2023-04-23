@@ -15,7 +15,6 @@ plt.show()
 for u, v in G.edges:
     G.edges[u, v]["weight"] = rng.integers(5, 15)
 
-
 path = nx.shortest_path(G, 7, 9, weight="weight")
 print(path)
 # [7, 5, 2, 9]
