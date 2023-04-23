@@ -1,10 +1,10 @@
 import pandas as pd
+from jax import random
 import jax.numpy as np
 
-from numpy.random import default_rng
-rng = default_rng(12345)
+key = random.PRNGKey(12345)
 
-diff_data = rng.normal(0, 1, size=100)
+diff_data = random.normal(key, (100,))
 cumulative = diff_data.cumsum() 
 
 data_series = pd.Series(diff_data)
