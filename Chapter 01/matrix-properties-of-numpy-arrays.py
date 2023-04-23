@@ -32,6 +32,7 @@ A @ I
 #        [3, 4]])
 
 from jax.numpy import linalg
+
 linalg.det(A)  # -2.0000000000000004
 linalg.inv(A)
 # array([[-2. , 1. ],
