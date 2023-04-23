@@ -4,7 +4,8 @@ from mpl_toolkits import mplot3d
 
 t = np.linspace(-5, 5)
 x, y = np.meshgrid(t, t)
-z = np.exp(-((x - 2.) ** 2 + (y - 3.) ** 2) / 4) - np.exp(-((x + 3.) ** 2 + (y + 2) ** 2) / 3)
+z = np.exp(-((x - 2.) ** 2 + (y - 3.) ** 2) / 4) \
+    - np.exp(-((x + 3.) ** 2 + (y + 2) ** 2) / 3)
 
 fig = plt.figure()
 

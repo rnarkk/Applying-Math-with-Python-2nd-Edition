@@ -20,7 +20,6 @@ y3 = h(x)  # evaluate h on the x points
 fig, ax = plt.subplots()
 
 ax.plot(x, y1, "k")  # black solid line style
-
 ax.plot(x, y2, "k--")  # black dashed line style
 ax.plot(x, y3, "k.-")  # black dot-dashed line style
 
