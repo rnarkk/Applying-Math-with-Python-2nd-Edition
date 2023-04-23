@@ -1,4 +1,4 @@
-import numpy as np
+import jax.numpy as np
 import nashpy as nash
 
 rps_p1 = np.array([
