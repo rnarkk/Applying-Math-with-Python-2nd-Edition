@@ -1,8 +1,8 @@
-import numpy as np
+import jax.numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 
-from numpy.random import default_rng
+from jax.random import default_rng
 rng = default_rng(12345)
 
 from shapely.geometry import MultiPoint
