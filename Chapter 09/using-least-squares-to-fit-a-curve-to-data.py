@@ -1,11 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
-from numpy.random import default_rng
+from jax import random
 rng = default_rng(12345)
 
-from scipy.optimize import curve_fit
-
+from jax.scipy.optimize import curve_fit
 
 SIZE = 100
 x_data = rng.uniform(-3.0, 3.0, size=SIZE)
