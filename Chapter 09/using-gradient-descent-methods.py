@@ -19,7 +19,7 @@ def descend(func, x0, grad, bounds, tol=1e-8, max_iter=100):
         yield i, xn, func(xn), grad_xn
 
 def func(x):
-    return ((x[0] - 0.5) ** 2 + (x[1] + 0.5) ** 2) * np.cos(0.5*x[0]*x[1])
+    return ((x[0] - 0.5) ** 2 + (x[1] + 0.5) ** 2) * np.cos(0.5 * x[0] * x[1])
 
 x_r = np.linspace(-1, 1)
 y_r = np.linspace(-2, 2)
@@ -40,12 +40,12 @@ x0 = np.array([-0.8, 1.3])
 surf_ax.plot([x0[0]], [x0[1]], func(x0), "k*")
 
 def grad(x):
-    c1 = x[0]**2 - x[0] + x[1]**2 + x[1] + 0.5
-    cos_t = np.cos(0.5*x[0]*x[1])
-    sin_t = np.sin(0.5*x[0]*x[1])
+    c1 = x[0] ** 2 - x[0] + x[1] ** 2 + x[1] + 0.5
+    cos_t = np.cos(0.5 * x[0] * x[1])
+    sin_t = np.sin(0.5 * x[0] * x[1])
     return np.array([
-        (2*x[0]-1)*cos_t - 0.5*x[1]*c1*sin_t,
-        (2*x[1]+1)*cos_t - 0.5*x[0]*c1*sin_t
+        (2 * x[0] - 1) * cos_t - 0.5 * x[1] * c1 * sin_t,
+        (2 * x[1] + 1) * cos_t - 0.5 * x[0] * c1 * sin_t
     ])
 
 cont_fig, cont_ax = plt.subplots()
@@ -63,6 +63,5 @@ for i, xn, fxn, grad_xn in descend(func, x0, grad, bounds):
 print(f"iterations={i}")
 print(f"min val at {xn}")
 print(f"min func value = {fxn}")
-
 
 plt.show()
