@@ -1,6 +1,6 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-import numpy as np
+import jax.numpy as np
 
 from shapely.geometry import Polygon
 from shapely.ops import triangulate
@@ -19,7 +19,6 @@ plt_hole = mpl.patches.Polygon(polygon.interiors[0].coords, ec="k", fc="w")
 ax.add_patch(plt_hole)
 ax.set(xlim=(-4.05, 2.05), ylim=(-2.05, 1.55))
 ax.set_axis_off()
-
 
 triangles = triangulate(polygon)
 
