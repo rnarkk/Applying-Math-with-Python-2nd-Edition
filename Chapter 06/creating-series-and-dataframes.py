@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+import jax.numpy as np
 
 from numpy.random import default_rng
 rng = default_rng(12345)
