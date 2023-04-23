@@ -1,6 +1,6 @@
 import pandas as pd
-import math
-from scipy import stats
+import jax.numpy as np
+from jax.scipy import stats
 import matplotlib.pyplot as plt
 
 sample_data = pd.Series(
@@ -16,7 +16,7 @@ print(f"Mean {sample_mean}, st. dev {sample_std}")
 # Mean 172.15, st. dev 7.473778724383846
 
 N = sample_data.count()
-std_err = sample_std/math.sqrt(N)
+std_err = sample_std / np.sqrt(N)
 
 cv_95, cv_99 = stats.t.ppf([0.975, 0.995], df=N-1)
 
