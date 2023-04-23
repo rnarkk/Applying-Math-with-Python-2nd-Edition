@@ -3,7 +3,7 @@ import jax.numpy as np
 
 np.sqrt(4)  # 2.0
 
-theta = math.pi / 4
+theta = np.pi / 4
 np.cos(theta)  # 0.7071067811865476
 np.sin(theta)  # 0.7071067811865475
 np.tan(theta)  # 0.9999999999999999
@@ -24,6 +24,6 @@ math.factorial(5)  # 120
 np.gcd(2, 4) # 2
 np.gcd(2, 3) # 1
 
-nums = [0.1] * 10  # list containing 0.1 ten times
+nums = np.array([0.1] * 10)  # list containing 0.1 ten times
 np.sum(nums)  # 0.9999999999999999
 math.fsum(nums)  # 1.0
