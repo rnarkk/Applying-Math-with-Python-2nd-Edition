@@ -1,15 +1,14 @@
-import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d
-
 import jax.numpy as np
 from jax import grad, jit, vmap
+import matplotlib.pyplot as plt
+from mpl_toolkits import mplot3d
 
 @jit
 def f(x, y):
     return np.exp(-(x ** 2 + y ** 2))
 
-t = jnp.linspace(-1.0, 1.0)
-x, y = jnp.meshgrid(t, t)
+t = np.linspace(-1.0, 1.0)
+x, y = np.meshgrid(t, t)
 fig = plt.figure()
 ax = fig.add_subplot(projection="3d")
 ax.plot_surface(x, y, f(x, y), cmap="gray")
