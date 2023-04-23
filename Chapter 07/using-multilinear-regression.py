@@ -1,11 +1,10 @@
-import numpy as np
+import jax.numpy as np
 import pandas as pd
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
-from numpy.random import default_rng
+from jax.random import default_rng
 rng = default_rng(12345)
-
 
 p_vars = pd.DataFrame({
     "const": np.ones((100,)),
