@@ -1,10 +1,10 @@
 import pandas as pd
-import numpy as np
-from numpy.random import default_rng
-rng = default_rng(12345)
+from jax import random
+import jax.numpy as np
 
+key = random.PRNGKey(12345)
 
-diffs = rng.normal(0, 1, size=100)
+diffs = random.normal(key, (100,))
 cumulative = diffs.cumsum()
 
 data_frame = pd.DataFrame({
@@ -13,9 +13,7 @@ data_frame = pd.DataFrame({
 })
 print(data_frame)
 
-
 data_frame.to_csv("sample.csv", index=False)
-
 
 df = pd.read_csv("sample.csv", index_col=False)
 print(df)
