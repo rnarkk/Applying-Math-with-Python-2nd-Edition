@@ -40,11 +40,9 @@ rpacf_ax.set_xlabel("Lags")
 rpacf_ax.set_ylabel("Value")
 racf_ax.set_ylabel("Value")
 
-
 fitted = arma_results.fittedvalues
 fitted.plot(ax=ts_ax, label="Fitted")
 ts_ax.legend()
-
 
 plt.show()
 
