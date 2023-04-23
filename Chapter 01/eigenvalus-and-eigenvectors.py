@@ -1,6 +1,5 @@
-import numpy as np
-
-from numpy import linalg
+import jax.numpy as np
+from jax.numpy import linalg
 
 A = np.array([[3, -1, 4], [-1, 0, -1], [4, -1, 2]])
 
@@ -18,6 +17,5 @@ linalg.norm(x0)  # 1.0  - eigenvalues are normalised.
 
 
 lhs = A @ x0
-rhs = lambda0*x0
+rhs = lambda0 * x0
 linalg.norm(lhs - rhs)  # 2.8445583831733384e-15 - very small.
-
