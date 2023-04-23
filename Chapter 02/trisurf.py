@@ -1,7 +1,6 @@
-import numpy as np
+import jax.numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
-
 
 x = np.array([ 0.19, -0.82, 0.8 , 0.95, 0.46, 0.71,
      -0.86, -0.55,   0.75,-0.98, 0.55, -0.17, -0.89,
@@ -12,7 +11,6 @@ y = np.array([-0.25, -0.71, -0.88, 0.55, -0.88, 0.23,
 z = np.array([-0.04, 0.44, -0.53, 0.4, -0.31, 0.13,
       -0.12, 0.03, 0.53, -0.03, -0.25, 0.03, -0.1 ,
           -0.29, 0.19, -0.03, 0.58, -0.01, 0.55, -0.06])
-
 
 fig = plt.figure(tight_layout=True)
 ax1 = fig.add_subplot(1, 2, 1, projection="3d")
