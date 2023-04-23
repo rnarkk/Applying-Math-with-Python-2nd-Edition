@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+import jax.numpy as np
 import matplotlib.pyplot as plt
 from numpy.random import default_rng
 rng = default_rng(12345)
@@ -19,6 +19,5 @@ ax1.set_ylabel("Value")
 
 df["diffs"].plot(kind="hist", ax=ax2, title="Histogram of diffs", color="k", alpha=0.6)
 ax2.set_xlabel("Difference")
-
 
 plt.show()
