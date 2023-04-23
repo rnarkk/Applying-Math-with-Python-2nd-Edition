@@ -1,13 +1,13 @@
-import numpy as np
+import jax.numpy as np
 import matplotlib.pyplot as plt
 
-from numpy.random import default_rng
-rng = default_rng(12345)
+from jax.random import PRNGKey
+rng = PRNGKey(12345)
 
 import pymc as pm
 
 def underlying(x, params):
-    return params[0]*x**2 + params[1]*x + params[2]
+    return params[0] * x ** 2 + params[1] * x + params[2]
 
 size = 100
 true_params = [2, -7, 6]
@@ -32,7 +32,6 @@ with pm.Model() as model:
     y_obs = pm.Normal("y_obs", mu=y, sigma=2, observed=sample)
     trace = pm.sample(cores=4)
 
-
 fig2, axs2 = plt.subplots(1, 3, tight_layout=True)
 
 pm.plot_posterior(trace, ax=axs2, color="k")
@@ -52,12 +51,4 @@ ax3.set_xlabel("x")
 ax3.set_ylabel("y")
 ax3.legend()
 
-
 plt.show()
-
-
-
-
-
-
-
