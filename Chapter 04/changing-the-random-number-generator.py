@@ -1,4 +1,4 @@
-from numpy import random
+from jax.numpy import random
 
 seed_seq = random.SeedSequence()
 
