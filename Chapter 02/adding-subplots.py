@@ -1,12 +1,11 @@
 import jax.numpy as np
 import matplotlib.pyplot as plt
-from math import fabs
 
 def generate_newton_iters(x0, number):
-    yield x0, fabs(x0 - 1.)
+    yield x0, np.abs(x0 - 1.)
     for _ in range(number):
         x0 = x0 - (x0 * x0 - 1.) / (2 * x0)
-        yield x0, fabs(x0 - 1.)
+        yield x0, np.abs(x0 - 1.)
 
 data = np.array(list(generate_newton_iters(2.0, 5)))
 iterates, errors = data[:, 0], data[:, 1]
