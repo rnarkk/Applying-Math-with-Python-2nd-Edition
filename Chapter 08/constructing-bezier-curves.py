@@ -1,10 +1,8 @@
 from math import comb as binom
 import matplotlib.pyplot as plt
-import numpy as np
-
+import jax.numpy as np
 
 class Bezier:
-
     def __init__(self, *points):
         self.points = points
         self.nodes = n = len(points) - 1
@@ -18,12 +16,10 @@ class Bezier:
         vals = [c @ (t**i)*(1-t)**(n-i) for i, c in enumerate(self.coeffs)]
         return np.sum(vals, axis=0)
 
-
 p1 = np.array([0.0, 0.0])
 p2 = np.array([0.0, 1.0])
 p3 = np.array([1.0, 1.0])
 p4 = np.array([1.0, 3.0])
-
 
 fig, ax = plt.subplots()
 ax.plot([0.0, 0.0, 1.0, 1.0], [0.0, 1.0, 1.0, 3.0], "*--k")
