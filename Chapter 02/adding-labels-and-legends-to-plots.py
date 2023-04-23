@@ -1,4 +1,4 @@
-import numpy as np
+import jax.numpy as np
 import matplotlib.pyplot as plt
 
 y1 = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
@@ -13,11 +13,6 @@ ax.set_title("Plot of the data y1, y2, and y3")
 ax.set_xlabel("x axis label")
 ax.set_ylabel("y axis label")
 
-
-
 ax.legend(("data y1", "data y2", "data y3"))
 
-
 plt.show()
-
-
