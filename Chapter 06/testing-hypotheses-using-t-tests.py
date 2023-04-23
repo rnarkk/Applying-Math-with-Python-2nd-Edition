@@ -1,5 +1,5 @@
 import pandas as pd
-from scipy import stats
+from jax.scipy import stats
 
 sample = pd.Series([
     2.4, 2.4, 2.9, 2.6, 1.8, 2.7, 2.6, 2.4, 2.8, 2.4, 2.4,
@@ -16,7 +16,6 @@ t_statistic, p_value = stats.ttest_1samp(sample, mu0)
 
 print(f"t stat: {t_statistic}, p value: {p_value}")
 # t stat: 9.752368720068665, p value: 4.596949515944238e-13
-
 
 if p_value <= significance:
     print("Reject H0 in favour of H1: mu != 2.0")
