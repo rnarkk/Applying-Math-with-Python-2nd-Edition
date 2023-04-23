@@ -10,5 +10,4 @@ fig, ax = plt.subplots()
 ax.imshow(edges, cmap="gray_r")
 ax.set_axis_off()
 
-
 plt.show()
