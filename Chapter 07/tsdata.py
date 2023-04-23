@@ -1,15 +1,15 @@
 from collections import deque
+from jax import random
 import jax.numpy as np
 import pandas as pd
 import itertools
 
-from jax.random import default_rng
 
 def _get_n(iterable, n):
     return list(itertools.islice(iterable, n))
 
 def generate_ma(*coeffs, std=1.0, seed=12345):
-    rng = default_rng(seed=seed)
+    key = random.PRNGKey(seed=seed)
     n = len(coeffs)
     past_terms = deque(maxlen=n)
     past_terms.extend([0.0]*n)
@@ -17,20 +17,20 @@ def generate_ma(*coeffs, std=1.0, seed=12345):
     coeffs = tuple(reversed(coeffs))
 
     while True:
-        err = rng.normal(0, std)
-        yield err + sum(c*e for c, e in zip(coeffs, past_terms))
+        err = random.normal(key) * std
+        yield err + sum(c * e for c, e in zip(coeffs, past_terms))
         past_terms.append(err)
 
 def generate_ar(*coeffs, const=0.0, start=0.0):
     n = len(coeffs)
     past_terms = deque(maxlen=n)
-    past_terms.extend([0.0]*(n-1))
+    past_terms.extend([0.0] * (n - 1))
     past_terms.append(start)
 
     coeffs = tuple(reversed(coeffs))
 
     while True:
-        curr = const + sum(c*t for c, t in zip(coeffs, past_terms))
+        curr = const + sum(c * t for c, t in zip(coeffs, past_terms))
         yield curr
         past_terms.append(curr)
 
@@ -38,7 +38,7 @@ def generate_arma(ar_coeffs=(0.9,), const=0.0, start=0.0,
                   ma_coeffs=(), noise_std=1.0, seed=None):
     n = len(ar_coeffs)
     past_terms = deque(maxlen=n)
-    past_terms.extend([0.0]*(n-1))
+    past_terms.extend([0.0] * (n - 1))
     past_terms.append(start)
 
     coeffs = tuple(reversed(ar_coeffs))
@@ -63,10 +63,10 @@ def add_season_ar(iterable, period=7, coeffs=(0.7,)):
     coeffs = tuple(reversed(coeffs))
     N = n + period - 1
     past_vals = deque(maxlen=N)
-    past_vals.extend([0.0]*N)
+    past_vals.extend([0.0] * N)
 
     for item in iterable:
-        new = item + sum(coeffs[i]*past_vals[i] for i in range(n))
+        new = item + sum(coeffs[i] * past_vals[i] for i in range(n))
         yield new
         past_vals.append(new)
 
