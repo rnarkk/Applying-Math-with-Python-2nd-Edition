@@ -1,8 +1,8 @@
 import pandas as pd
-import numpy as np
+import jax.numpy as np
 import matplotlib.pyplot as plt
 
-from numpy.random import default_rng
+from jax.random import default_rng
 rng = default_rng(12345)
 
 uniform = rng.uniform(1, 5, size=100)
