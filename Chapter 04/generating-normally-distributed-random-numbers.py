@@ -1,12 +1,12 @@
+from jax import random
 import jax.numpy as np
 import matplotlib.pyplot as plt
 
-from jax.random import PRNGKey
-rng = PRNGKey(12345)
+key = random.PRNGKey(12345)
 
 mu = 5.0  # mean value
 sigma = 3.0  # standard deviation
-rands = rng.normal(loc=mu, scale=sigma, size=10000)
+rands = random.normal(key, (10000,)) * sigma + mu
 
 fig, ax = plt.subplots()
 ax.hist(rands, bins=20, color="k", alpha=0.6)
