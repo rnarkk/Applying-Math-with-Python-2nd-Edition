@@ -1,11 +1,10 @@
-import numpy as np
-import scipy as sp
+import jax.numpy as np
+import jax.scipy as sp
 
 import matplotlib.pyplot as plt
 
-from scipy.stats import beta as beta_dist
+from jax.scipy.stats import beta as beta_dist
 beta_pdf = beta_dist.pdf
-
 
 prior_alpha = 25
 prior_beta = 75
