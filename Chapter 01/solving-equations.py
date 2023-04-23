@@ -11,5 +11,3 @@ optimize.newton(f, 1., x1=1.5)  # Using x1 = 1.5 and the secant method
 # 1.9999999999999862
 optimize.newton(f, 1., fprime=fp)  # Using Newton-Raphson method
 # 2.0
-
-
